@@ -10,9 +10,9 @@ def displayFiles(request):
     data = Fichier.objects.all().values()
 
     context = {
-       'files': data   
+       'files': data    
     }
-    print(context)
+    print(context) 
      
     return render(request, 'home.html', context)
 
@@ -21,17 +21,13 @@ def createFiles(request):
 
     if request.method == 'POST':
         form = FichierForm(request.POST).save()
-        # message = 'Le Fichier a bien été créé'
         redirect('create')
     else:
-        # message = 'Le Fichier n\'a pas été créé'
         form = FichierForm()
 
     context = {
         'form': form,
-        # 'message': message
     }
-    
     return render(request, 'create.html', context)
      
      
