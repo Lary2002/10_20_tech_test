@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn btn-primary"> <a href="{% url "create" %} " style="color:white"> Ajouter de Fichier </a> </div>
+            <br>
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                <th><span>Nom</span></th>
+                                <th><span>Taille</span></th>
+                                <th class="text-center"><span>Date de Création</span></th>
+                                {% comment %} <th><span>Status</span></th> {% endcomment %}
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for file in files %}
+
+                                <tr>
+                                    
+                                    <td>{{ file.nom }} </td>
+                                    <td >
+                                        <span class="label label-default">{{ file.taille }}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {{ file.date_upload }}
+                                    </td>
+                                    <td style="width: 20%;">
+                                        {% comment %} <a href="#" class="table-link text-warning">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a> {% endcomment %}
+                                        <a href="#" class="table-link text-info">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="table-link danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
