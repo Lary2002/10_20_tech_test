@@ -3,7 +3,7 @@ from django.http import request
 from .models import * 
 from .form import *
 
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, hashers
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -27,7 +27,7 @@ def createFiles(request):
         form = FichierForm(request.POST or None)
         if form.is_valid():
             form.save()
-        redirect('create')
+        return redirect('/create')
     
     form = FichierForm()
 
@@ -81,14 +81,15 @@ def deleteFile(request, id):
 def register(request):
 
     if request.method == 'POST':
-
+        
         form = UserForm(data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Inscription réussie")
-            return redirect('login')
+            message = messages.success(request, "Inscription réussie")
+            return redirect('/login')
         else:
-            messages.error(request, "Erreur lors de l'inscription")
+            message = messages.error(request, "Erreur lors de l'inscription")
+            print('echec')
 
 
     return render(request, 'register.html')
@@ -98,16 +99,25 @@ def login(request):
 
     if request.method == 'POST':
         email = request.POST['email']
-        password = request.POST['password']
+        password = hashers.make_password(request.POST['password'])
 
-        user = authenticate(request, email= email, password= password)
+        print(email, password)
+        user = authenticate(request, email=email, password=password)
+        # user = get_object_or_404(User, email=email, password=password)
 
+        print(user)
         if user is not None and user.is_active:
             login(request, user)
-            messages.success(request, "Connexion réussie")
+            
+            message = messages.success(request, "Connexion réussie")
+            
+            return redirect('/')
+            
         else:
-            messages.error(request, "Erreur d'authentification")
-            return redirect('home')
+            message = messages.error(request, "Erreur d'authentification")
+
+            print('echec')
+            return redirect('/login')
 
     return render(request, 'login.html')
 

@@ -25,7 +25,11 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+                    <input type="password" name="password1" class="form-control input-lg" placeholder="Mot de passe">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password2" class="form-control input-lg" placeholder="Confirmez mot de passe">
                 </div>
 
                 <div class="">
@@ -34,6 +38,8 @@
                 </div>
                 </form>
             </div>
+            <br>
+            <p> Vous déja de compte? <a href="{% url "login" %}"> Se connecter </a></p>
         </div>
     </div>
   </div>
