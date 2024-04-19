@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+{% block content %}
+
+<form method="POST" role="form" class="form-horizontal">
+{% csrf_token %}
+
+<!--login modal-->
+
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    
+    <div class="modal-dialog">
+        {% comment %} <a href="{% url "home" %}"><div class="btn btn-primary">Retour</div></a> {% endcomment %}
+        <div class="modal-content">
+            
+            <div class="modal-body">
+                {% comment %} <span class="label label-primary"> {{ message }} </span> {% endcomment %}
+                <form method="POST" class="form col-md-12 center-block">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control input-lg" placeholder="Nom d'utilisateur">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control input-lg" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+                </div>
+
+                <div class="">
+                    <button type="submit" class="btn btn-primary btn-lg ">Inscription</button>
+                    <button type="reset"class="btn btn-danger btn-lg pull-right " >Annuler</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+{% endblock  %}
