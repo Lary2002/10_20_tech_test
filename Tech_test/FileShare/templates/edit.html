@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% block content %}
 
-<form method="POST" role="form" class="form-horizontal">
+<form method="POST" action="" role="form" class="form-horizontal">
 {% csrf_token %}
 
 <!--login modal-->
@@ -17,17 +17,17 @@
                 {% comment %} <span class="label label-primary"> {{ message }} </span> {% endcomment %}
                 <form method="POST" class="form col-md-12 center-block">
                 <div class="form-group">
-                    {% render_field form.nom class+="form-control input-lg"  placeholder="Nom" %}
+                    {% render_field form.nom class+="form-control input-lg" value=""  placeholder="Nom" %}
                     {% comment %} <input type="text" class="form-control input-lg" placeholder="Email"> {% endcomment %}
                 </div>
 
                 <div class="form-group">
-                    {% render_field form.taille class+="form-control input-lg"  placeholder="Taille"%}
+                    {% render_field form.taille class+="form-control input-lg" value=""  placeholder="Taille"%}
                     {% comment %} <input type="password" class="form-control input-lg" placeholder="Password"> {% endcomment %}
                 </div>
 
                 <div class="">
-                    <button type="submit" class="btn btn-primary btn-lg ">Ajouter</button>
+                    <button type="submit" class="btn btn-primary btn-lg ">Modifier</button>
                     <button type="reset"class="btn btn-danger btn-lg pull-right " >Annuler</button>
                 </div>
                 </form>

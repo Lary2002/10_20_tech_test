@@ -7,6 +7,7 @@
 <hr>
 <div class="container bootstrap snippets bootdey">
     <div class="row">
+        <h2 class="text-center"> Fichiers Partagés </h2>
         <div class="col-lg-12">
             <div class="btn btn-primary"> <a href="{% url "create" %} " style="color:white"> Ajouter de Fichier </a> </div>
             <br>
@@ -43,13 +44,13 @@
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a> {% endcomment %}
-                                        <a href="#" class="table-link text-info">
+                                        <a href="{% url "edit" file.id %}" class="table-link text-info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a href="#" class="table-link danger">
+                                        <a href="{% url "delete" file.id %}" class="table-link danger">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

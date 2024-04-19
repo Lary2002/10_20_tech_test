@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+
+<!--login modal-->
+
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    
+    <div class="modal-dialog">
+        
+        <div class="modal-content">
+            
+            <div class="modal-body">
+                {% comment %} <span class="label label-primary"> {{ message }} </span> {% endcomment %}
+                <p> Voulez-vous vraiment supprimer le fichier {{ nom }} ?</p>
+                <form method="POST" class="form col-md-12 center-block">
+                    {% csrf_token %}
+                    
+                    
+                    <br>
+                <div class="">
+                    <button type="submit" class="btn btn-danger btn-lg ">Confirmer</button>
+                    <a href="{% url "home" %}"><div class="btn btn-primary btn-lg pull-right">Annuler</div></a>
+                    {% comment %} <button type="reset"class="btn btn-primary btn-lg pull-right " >Annuler</button> {% endcomment %}
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+{% endblock  %}
