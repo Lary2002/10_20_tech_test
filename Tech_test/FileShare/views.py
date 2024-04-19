@@ -20,7 +20,7 @@ def displayFiles(request):
      
     return render(request, 'home.html', context)
 
-
+@login_required
 def createFiles(request):
 
     if request.method == 'POST':
