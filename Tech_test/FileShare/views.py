@@ -20,7 +20,7 @@ def displayFiles(request):
      
     return render(request, 'home.html', context)
 
-@login_required
+# @login_required
 def createFiles(request):
 
     if request.method == 'POST':
@@ -37,7 +37,7 @@ def createFiles(request):
     return render(request, 'create.html', context)
 
 
-@login_required
+# @login_required
 def editFile(request, id):
 
     file = get_object_or_404(Fichier, id=id)
@@ -59,7 +59,7 @@ def editFile(request, id):
     return render(request, 'edit.html', context)
 
 
-@login_required
+# @login_required
 def deleteFile(request, id):
 
     file = get_object_or_404(Fichier, id=id)
