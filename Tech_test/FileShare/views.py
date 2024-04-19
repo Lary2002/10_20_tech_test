@@ -22,8 +22,8 @@ def createFiles(request):
     if request.method == 'POST':
         form = FichierForm(request.POST).save()
         redirect('create')
-    else:
-        form = FichierForm()
+    
+    form = FichierForm()
 
     context = {
         'form': form,
