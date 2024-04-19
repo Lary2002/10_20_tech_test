@@ -3,7 +3,7 @@ from django.http import request
 from .models import * 
 from .form import *
 
-from django.contrib.auth import login, logout, authenticate, hashers
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -78,7 +78,7 @@ def deleteFile(request, id):
     return render(request, 'delete.html',context)
 
 
-def register(request):
+def inscription(request):
 
     if request.method == 'POST':
         
@@ -95,27 +95,26 @@ def register(request):
     return render(request, 'register.html')
 
 
-def login(request):
+def connexion(request):
 
     if request.method == 'POST':
-        email = request.POST['email']
-        password = hashers.make_password(request.POST['password'])
+        username = request.POST['username']
+        password = request.POST['password']
 
-        print(email, password)
-        user = authenticate(request, email=email, password=password)
-        # user = get_object_or_404(User, email=email, password=password)
+        print(username, password)
+        user = authenticate(request, username=username, password=password)
+        # user = get_object_or_404(User, username=username, password=password)
 
-        print(user)
+        
         if user is not None and user.is_active:
             login(request, user)
-            
-            message = messages.success(request, "Connexion réussie")
+
+            messages.success(request, "Connexion réussie")
             
             return redirect('/')
             
         else:
-            message = messages.error(request, "Erreur d'authentification")
-
+            messages.error(request, "Erreur d'authentification")
             print('echec')
             return redirect('/login')
 
@@ -123,7 +122,7 @@ def login(request):
 
 
 @login_required
-def logout(request):
+def deconnexion(request):
     logout(request)
      
      
